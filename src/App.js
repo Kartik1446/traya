@@ -1,23 +1,20 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <section className="HeroSection">
+        <div className="HeroContent">
+          <h1 className="Headline">Reimagining Track Inspection – Indigenous, Contactless, World-Class ITMS</h1>
+          <p className="Subheadline">Cutting-edge sensors, AI, and engineering delivering railway safety, accuracy, and Atmanirbhar Bharat innovation.</p>
+          <div className="CallToActionButtons">
+            <button className="Button PrimaryButton">Explore Technology</button>
+            <button className="Button SecondaryButton">Partner With Us</button>
+          </div>
+          <p className="Tagline">Accuracy. Reliability. Atmanirbhar.</p>
+        </div>
+      </section>
     </div>
   );
 }
