@@ -23,7 +23,7 @@ body {
   justify-content: center;
   align-items: flex-start; /* Aligned content to the top */
   /* Removed padding-top to eliminate the empty space */
-  overflow: hidden;
+  /* Removed overflow: hidden; to allow scrolling */
   color: var(--text-light);
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
@@ -855,7 +855,9 @@ body {
 }
 
 .indian-railways-logo {
-  /* Removed position: fixed, top, left, and z-index to make it scroll with the page */
+  position: relative; /* Ensure it creates a stacking context and scrolls with the page */
+  z-index: 50; /* Place it above other elements, including the CardNav (z-index: 99) */
+  top: 0; /* Start from the top of its containing block */
   width: 400px; /* Retaining the increased size */
   height: auto;
   margin-top: -10px; /* Moved slightly up by adding a negative top margin */
