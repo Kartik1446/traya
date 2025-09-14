@@ -11,126 +11,419 @@ body {
 
 .App {
   text-align: center;
+  background-color: var(--background-dark);
+  color: var(--text-light);
+  font-family: var(--font-body);
 }
 
 .HeroSection {
-  min-height: 100vh;
+  position: relative;
+  height: 100vh;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  background-color: #0A0A0A; /* Deep Space Black */
-  color: #FFFFFF; /* Pure White */
-  padding: 20px;
-  box-sizing: border-box;
+  align-items: center;
+  overflow: hidden;
+  color: var(--text-light);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .HeroContent {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  padding: 20px;
   max-width: 900px;
-  margin: 0 auto;
 }
 
-.Headline {
-  font-size: 3.5em;
-  font-weight: bold;
+.HeroContent h1 {
+  font-family: var(--font-heading);
+  font-size: 4em;
   margin-bottom: 20px;
-  color: #FFFFFF;
+  color: var(--primary-color);
 }
 
-.Subheadline {
+.HeroContent p {
   font-size: 1.5em;
-  margin-bottom: 40px;
-  color: #9E9E9E; /* Muted gray */
+  margin-bottom: 30px;
+  color: var(--text-light);
 }
 
-.CallToActionButtons {
-  margin-bottom: 40px;
+.CtaButtons {
+  margin-top: 30px;
 }
 
-.Button {
-  background-color: #007BFF; /* Electric Blue */
-  color: #FFFFFF;
-  border: none;
+.PrimaryButton, .SecondaryButton {
+  font-family: var(--font-body);
+  font-size: 1.2em;
   padding: 15px 30px;
-  margin: 0 10px;
-  font-size: 1.1em;
-  cursor: pointer;
+  margin: 0 15px;
+  border: none;
   border-radius: 5px;
-  transition: background-color 0.3s ease;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
 }
 
-.Button:hover {
-  background-color: #0056b3;
+.PrimaryButton {
+  background-color: var(--primary-color);
+  color: var(--background-dark);
+}
+
+.PrimaryButton:hover {
+  background-color: var(--secondary-color);
+  transform: translateY(-3px);
 }
 
 .SecondaryButton {
   background-color: transparent;
-  border: 2px solid #007BFF; /* Electric Blue */
+  color: var(--primary-color);
+  border: 2px solid var(--primary-color);
 }
 
 .SecondaryButton:hover {
-  background-color: #007BFF;
-  color: #FFFFFF;
+  background-color: var(--primary-color);
+  color: var(--background-dark);
+  transform: translateY(-3px);
 }
 
 .Tagline {
-  font-size: 1.8em;
+  font-size: 1.1em;
+  margin-top: 40px;
   font-style: italic;
-  color: #D9D9D9; /* Metallic Silver */
+  color: var(--text-medium);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.BackgroundVideo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: 0;
+  transform: translate(-50%, -50%) scale(0.67);
+  filter: brightness(50%);
+  object-fit: cover;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.sketchfab-embed-wrapper {
-  width: 80%; /* Adjust as needed */
-  height: 500px; /* Adjust as needed */
-  margin: 40px auto;
+.JourneySection {
+  min-height: 500vh; /* Increased height to allow for scrolling animation */
+  background-color: var(--background-medium);
+  color: var(--text-light);
+  padding: 50px 20px;
   position: relative;
+  z-index: 5;
+  font-family: var(--font-body);
 }
 
-.sketchfab-embed-wrapper iframe {
+.JourneyContent {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-top: 100px; /* Space for sticky train */
+}
+
+.JourneyContent h2 {
+  font-family: var(--font-heading);
+  font-size: 3.5em;
+  color: var(--primary-color);
+  margin-bottom: 30px;
+}
+
+.JourneyContent p {
+  font-size: 1.3em;
+  line-height: 1.6;
+  color: var(--text-light);
+}
+
+.TrainContainer {
+  position: sticky;
+  top: 100px; /* Adjust based on header height */
   width: 100%;
-  height: 100%;
-  border-radius: 8px;
+  height: 100px; /* Adjust as needed */
+  margin-top: 50px;
+  overflow: hidden; /* Keep the train within its container */
+  z-index: 10;
+  background-color: var(--background-medium); /* Ensure it stands out */
 }
 
-.sketchfab-embed-wrapper p {
-  color: #9E9E9E !important; /* Override inline style for better theme integration */
+.Track {
+  position: absolute;
+  bottom: 20px; /* Position the track */
+  left: 0;
+  width: 100%;
+  height: 5px; /* Thickness of the track */
+  background-color: transparent; /* Make the background transparent */
+  border-bottom: 2px dashed var(--text-dark); /* Add a dashed line for the track */
+  z-index: 1;
+  display: flex; /* Use flexbox to distribute sleepers */
+  justify-content: space-between; /* Distribute sleepers evenly */
+  align-items: center;
+  padding: 0 2%; /* Add some padding to the ends of the track */
+  box-sizing: border-box; /* Include padding in the width */
 }
 
-.sketchfab-embed-wrapper a {
-  color: #007BFF !important; /* Override inline style for better theme integration */
+.Sleeper {
+  width: 30px; /* Width of the sleeper */
+  height: 8px; /* Height of the sleeper */
+  background-color: var(--text-dark); /* Color of the sleeper */
+  border-radius: 2px;
+  transform: translateY(calc(50% - 2px)); /* Adjust to center with the track line */
+  flex-shrink: 0; /* Prevent sleepers from shrinking */
+}
+
+.Train {
+  position: absolute;
+  bottom: 0; /* Position the train on the track */
+  left: 0;
+  height: 80px; /* Adjust train image height as needed */
+  width: auto; /* Maintain aspect ratio */
+  transition: transform 0.1s linear; /* Smooth movement */
+  z-index: 2;
+}
+
+.JourneyTextBlock {
+  margin-bottom: 100vh; /* Create space for scrolling between text blocks */
+  padding: 50px;
+  background-color: var(--background-medium);
+  border-radius: 10px;
+  color: var(--text-light);
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.JourneyTextBlock h3 {
+  font-family: var(--font-heading);
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  color: var(--primary-color); /* A bright blue for headings */
+}
+
+.JourneyTextBlock p {
+  font-family: var(--font-body);
+  font-size: 1.2em;
+  line-height: 1.6;
+  color: var(--text-light);
+}
+
+:root {
+  /* Color Palette */
+  --primary-color: #00aaff; /* Bright blue for accents and CTAs */
+  --secondary-color: #0077cc; /* Darker blue for hover states or secondary elements */
+  --background-dark: #1a1a1a; /* Very dark grey for main backgrounds */
+  --background-medium: #2c2c2c; /* Medium dark grey for sections or cards */
+  --text-light: #f0f0f0; /* Light grey for general text */
+  --text-medium: #cccccc; /* Medium grey for secondary text */
+  --text-dark: #888888; /* Dark grey for subtle text or borders */
+  --accent-red: #ff4444; /* For error states or warnings */
+  --accent-green: #44ff44; /* For success states */
+
+  /* Typography */
+  --font-heading: 'Montserrat', sans-serif; /* A modern, strong sans-serif for headings */
+  --font-body: 'Open Sans', sans-serif; /* A readable sans-serif for body text */
+  --font-monospace: 'Fira Code', monospace; /* For code snippets or technical details */
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--background-dark); /* Apply dark background to the body */
+  color: var(--text-light); /* Apply light text color to the body */
+}
+
+.TechnologyDeepDiveSection {
+  background-color: var(--background-dark);
+  color: var(--text-light);
+  padding: 80px 20px;
+  font-family: var(--font-body);
+  text-align: center;
+}
+
+.TechnologyDeepDiveContent {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.TechnologyDeepDiveContent h2 {
+  font-family: var(--font-heading);
+  font-size: 3.5em;
+  color: var(--primary-color);
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.TechnologyDeepDiveContent p {
+  font-size: 1.3em;
+  line-height: 1.6;
+  color: var(--text-light);
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.Module {
+  background-color: var(--background-medium);
+  border-radius: 10px;
+  padding: 30px;
+  margin-bottom: 30px;
+  text-align: left;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  cursor: pointer; /* Indicate interactivity */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden; /* Hide overflow content initially */
+}
+
+.Module:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+}
+
+.Module h3 {
+  font-family: var(--font-heading);
+  font-size: 2em;
+  color: var(--primary-color);
+  margin-bottom: 15px;
+}
+
+.Module p {
+  font-size: 1.1em;
+  line-height: 1.5;
+  color: var(--text-medium);
+  text-align: left;
+  margin-bottom: 0;
+}
+
+.ExpandedContent {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease-out;
+  padding-top: 0;
+}
+
+.Module .ExpandedContent p {
+  margin-top: 20px;
+  color: var(--text-light);
+}
+
+/* When a module is expanded, apply these styles */
+.Module:has(.ExpandedContent:not([style*="max-height: 0px"])) .ExpandedContent {
+  max-height: 500px; /* Adjust as needed to fit content */
+  padding-top: 20px;
+}
+
+.ValueBenefitsSection {
+  background-color: var(--background-dark);
+  color: var(--text-light);
+  padding: 80px 20px;
+  font-family: var(--font-body);
+  text-align: center;
+}
+
+.ValueBenefitsContent {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.ValueBenefitsContent h2 {
+  font-family: var(--font-heading);
+  font-size: 3.5em;
+  color: var(--primary-color);
+  margin-bottom: 30px;
+}
+
+.ValueBenefitsContent p {
+  font-size: 1.3em;
+  line-height: 1.6;
+  color: var(--text-light);
+  margin-bottom: 50px;
+}
+
+.BenefitCard {
+  background-color: var(--background-medium);
+  border-radius: 10px;
+  padding: 30px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.BenefitCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+}
+
+.BenefitCard h3 {
+  font-family: var(--font-heading);
+  font-size: 2em;
+  color: var(--accent-color);
+  margin-bottom: 15px;
+}
+
+.BenefitCard p {
+  font-size: 1.1em;
+  line-height: 1.5;
+  color: var(--text-medium);
+  margin-bottom: 0;
+}
+
+.ComparisonSection {
+  margin-top: 80px;
+}
+
+.ComparisonSection h3 {
+  font-family: var(--font-heading);
+  font-size: 3em;
+  color: var(--primary-color);
+  margin-bottom: 40px;
+}
+
+.ComparisonTable {
+  display: flex;
+  justify-content: space-around;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.ComparisonColumn {
+  flex: 1;
+  min-width: 300px;
+  background-color: var(--background-medium);
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  text-align: left;
+}
+
+.ComparisonColumn h4 {
+  font-family: var(--font-heading);
+  font-size: 2.2em;
+  color: var(--accent-color);
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.ComparisonColumn ul {
+  list-style: none;
+  padding: 0;
+}
+
+.ComparisonColumn ul li {
+  font-size: 1.1em;
+  line-height: 1.8;
+  color: var(--text-light);
+  margin-bottom: 10px;
+  position: relative;
+  padding-left: 25px;
+}
+
+.ComparisonColumn ul li::before {
+  content: '•'; /* Bullet point */
+  color: var(--primary-color);
+  position: absolute;
+  left: 0;
+  font-size: 1.2em;
+  line-height: 1.8;
 }
