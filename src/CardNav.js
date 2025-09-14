@@ -39,7 +39,8 @@ const CardNav = ({
         contentEl.style.position = 'static';
         contentEl.style.height = 'auto';
 
-        contentEl.offsetHeight;
+        // eslint-disable-next-line no-unused-vars
+        const _ = contentEl.offsetHeight;
 
         const topBar = 60;
         const padding = 16;
@@ -60,7 +61,6 @@ const CardNav = ({
     const navEl = navRef.current;
     if (!navEl) return null;
 
-    gsap.set(navEl, { height: 60, overflow: 'hidden' });
     gsap.set(cardsRef.current, { y: 50, opacity: 0 });
 
     const tl = gsap.timeline({ paused: true });
@@ -68,7 +68,8 @@ const CardNav = ({
     tl.to(navEl, {
       height: calculateHeight,
       duration: 0.4,
-      ease
+      ease,
+      overwrite: true // Add overwrite to prevent conflicts
     });
 
     tl.to(cardsRef.current, { y: 0, opacity: 1, duration: 0.4, ease, stagger: 0.08 }, '-=0.1');
@@ -80,6 +81,9 @@ const CardNav = ({
     const tl = createTimeline();
     tlRef.current = tl;
 
+    // Ensure the navbar starts in a collapsed state
+    gsap.set(navRef.current, { height: 60, overflow: 'hidden' });
+
     return () => {
       tl?.kill();
       tlRef.current = null;
@@ -89,31 +93,21 @@ const CardNav = ({
 
   useLayoutEffect(() => {
     const handleResize = () => {
-      if (!tlRef.current) return;
+      if (!navRef.current) return;
 
       if (isExpanded) {
         const newHeight = calculateHeight();
-        gsap.set(navRef.current, { height: newHeight });
-
-        tlRef.current.kill();
-        const newTl = createTimeline();
-        if (newTl) {
-          newTl.progress(1);
-          tlRef.current = newTl;
-        }
+        gsap.to(navRef.current, { height: newHeight, duration: 0.2, ease: 'none', overwrite: true });
       } else {
-        tlRef.current.kill();
-        const newTl = createTimeline();
-        if (newTl) {
-          tlRef.current = newTl;
-        }
+        // When not expanded, ensure height is 60px on resize
+        gsap.to(navRef.current, { height: 60, duration: 0.2, ease: 'none', overwrite: true });
       }
     };
 
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isExpanded]);
+  }, [isExpanded, ease, items]);
 
   const toggleMenu = () => {
     const tl = tlRef.current;
@@ -123,9 +117,16 @@ const CardNav = ({
       setIsExpanded(true);
       tl.play(0);
     } else {
+      // Explicitly animate height back to 60px for contraction
+      gsap.to(navRef.current, {
+        height: 60,
+        duration: 0.4,
+        ease,
+        overwrite: true,
+        onComplete: () => setIsExpanded(false) // Set isExpanded to false after contraction
+      });
       setIsHamburgerOpen(false);
-      tl.eventCallback('onReverseComplete', () => setIsExpanded(false));
-      tl.reverse();
+      tl.reverse(0); // Reverse the cards animation
     }
   };
 
@@ -150,7 +151,7 @@ const CardNav = ({
           </div>
 
           <div className="logo-container">
-            <img src={logo} alt={logoAlt} className="logo" />
+            {logo && <img src={logo} alt={logoAlt} className="logo" />}
           </div>
 
           <button
@@ -163,26 +164,22 @@ const CardNav = ({
         </div>
 
         <div className="card-nav-content" aria-hidden={!isExpanded}>
-          {(items || []).map((item, i) => (
+          {(items || []).slice(0, 3).map((item, idx) => (
             <div
-              key={item.label}
-              ref={setCardRef(i)}
-              className="card-nav-item"
+              key={`${item.label}-${idx}`}
+              className="nav-card"
+              ref={setCardRef(idx)}
               style={{ backgroundColor: item.bgColor, color: item.textColor }}
             >
-              <div className="card-nav-item-header">
-                <h3>{item.label}</h3>
-                <GoArrowUpRight />
-              </div>
-              <ul className="card-nav-item-links">
-                {item.links.map(link => (
-                  <li key={link.label}>
-                    <a href="#" aria-label={link.ariaLabel}>
-                      {link.label}
-                    </a>
-                  </li>
+              <div className="nav-card-label">{item.label}</div>
+              <div className="nav-card-links">
+                {item.links?.map((lnk, i) => (
+                  <a key={`${lnk.label}-${i}`} className="nav-card-link" href={lnk.href} aria-label={lnk.ariaLabel}>
+                    <GoArrowUpRight className="nav-card-link-icon" aria-hidden="true" />
+                    {lnk.label}
+                  </a>
                 ))}
-              </ul>
+              </div>
             </div>
           ))}
         </div>
