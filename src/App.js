@@ -4,6 +4,7 @@ import 'locomotive-scroll/dist/locomotive-scroll.css';
 import './App.css';
 import logo from './logo.svg'; // Assuming logo.svg is in src folder
 import CardNav from './CardNav'; // Import the new CardNav component
+import indianRailwaysLogo from './indian_railways_logo.png'; // Corrected import path
 
 function App() {
   const containerRef = useRef(null);
@@ -76,6 +77,7 @@ function App() {
       containerRef={containerRef}
     >
       <main data-scroll-container ref={containerRef}>
+        <img src={indianRailwaysLogo} alt="Indian Railways Logo" className="indian-railways-logo" />
         <CardNav
           logo={null} // Set logo to null to remove it from the navbar
           logoAlt="Company Logo"
@@ -86,6 +88,15 @@ function App() {
           buttonTextColor="#fff"
           ease="power3.out"
         />
+        {/* Remove the video element and its content */}
+        {/*
+        <div className="video-background">
+          <video autoPlay loop muted playsInline className="video-element">
+            <source src="/assets/video.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        */}
         {/* Removed the old navigation list */}
         {/*
         <nav className="App-nav">
@@ -109,10 +120,6 @@ function App() {
               <button className="CtaButton secondary">Track My Rail</button>
             </div>
           </div>
-          <video autoPlay loop muted className="HeroVideo" data-scroll data-scroll-speed="-2">
-            <source src="/assets/video.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
         </section>
 
         <section id="journey" className="JourneySection" data-scroll-section>

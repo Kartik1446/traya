@@ -852,3 +852,12 @@ body {
   opacity: 1;
   transform: translateY(0);
 }
+
+.indian-railways-logo {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  width: 80px; /* Adjust size as needed */
+  height: auto;
+  z-index: 1000; /* Ensure it's on top of other elements */
+}
