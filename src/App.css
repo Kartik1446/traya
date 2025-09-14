@@ -18,10 +18,11 @@ body {
 
 .HeroSection {
   position: relative;
-  height: 100vh;
+  min-height: 100vh; /* Changed from height to min-height */
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start; /* Aligned content to the top */
+  /* Removed padding-top to eliminate the empty space */
   overflow: hidden;
   color: var(--text-light);
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
@@ -854,10 +855,8 @@ body {
 }
 
 .indian-railways-logo {
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  width: 80px; /* Adjust size as needed */
+  /* Removed position: fixed, top, left, and z-index to make it scroll with the page */
+  width: 400px; /* Retaining the increased size */
   height: auto;
-  z-index: 1000; /* Ensure it's on top of other elements */
+  margin-top: -10px; /* Moved slightly up by adding a negative top margin */
 }

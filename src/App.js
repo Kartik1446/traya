@@ -88,29 +88,6 @@ function App() {
           buttonTextColor="#fff"
           ease="power3.out"
         />
-        {/* Remove the video element and its content */}
-        {/*
-        <div className="video-background">
-          <video autoPlay loop muted playsInline className="video-element">
-            <source src="/assets/video.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-        </div>
-        */}
-        {/* Removed the old navigation list */}
-        {/*
-        <nav className="App-nav">
-          <ul>
-            <li><a href="#hero">Home</a></li>
-            <li><a href="#journey">Journey</a></li>
-            <li><a href="#technology">Technology</a></li>
-            <li><a href="#value">Value</a></li>
-            <li><a href="#roadmap">Roadmap</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </nav>
-        */}
-
         <section id="hero" className="HeroSection" data-scroll-section>
           <div className="HeroContent">
             <h1 data-scroll data-scroll-speed="2">Traya: The Future of Rail Travel</h1>
