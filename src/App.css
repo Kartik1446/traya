@@ -427,3 +427,428 @@ body {
   font-size: 1.2em;
   line-height: 1.8;
 }
+
+.BusinessRoadmapSection {
+  background-color: var(--background-dark);
+  color: var(--text-light);
+  padding: 80px 20px;
+  font-family: var(--font-body);
+  text-align: center;
+}
+
+.BusinessRoadmapContent {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.BusinessRoadmapContent h2 {
+  font-family: var(--font-heading);
+  font-size: 3.5em;
+  color: var(--primary-color);
+  margin-bottom: 30px;
+}
+
+.BusinessRoadmapContent p {
+  font-size: 1.3em;
+  line-height: 1.6;
+  color: var(--text-light);
+  margin-bottom: 50px;
+}
+
+.RoadmapTimeline {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 0;
+}
+
+.RoadmapTimeline::after {
+  content: '';
+  position: absolute;
+  width: 4px;
+  background-color: var(--accent-color);
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  margin-left: -2px;
+}
+
+.RoadmapItem {
+  padding: 10px 40px;
+  position: relative;
+  background-color: inherit;
+  width: 50%;
+}
+
+.RoadmapItem::after {
+  content: '';
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  right: -17px;
+  background-color: var(--primary-color);
+  border: 4px solid var(--accent-color);
+  top: 15px;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.RoadmapItem:nth-child(odd) {
+  left: 0;
+}
+
+.RoadmapItem:nth-child(even) {
+  left: 50%;
+}
+
+.RoadmapItem:nth-child(even)::after {
+  left: -16px;
+}
+
+.RoadmapYear {
+  padding: 10px 20px;
+  background-color: var(--primary-color);
+  color: var(--background-dark);
+  border-radius: 5px;
+  display: inline-block;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.RoadmapDescription {
+  padding: 20px 30px;
+  background-color: var(--background-medium);
+  position: relative;
+  border-radius: 6px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  text-align: left;
+}
+
+.RoadmapDescription h3 {
+  font-family: var(--font-heading);
+  font-size: 1.8em;
+  color: var(--accent-color);
+  margin-bottom: 10px;
+}
+
+.RoadmapDescription p {
+  font-size: 1em;
+  line-height: 1.5;
+  color: var(--text-medium);
+  margin-bottom: 0;
+}
+
+/* Adjustments for smaller screens */
+@media screen and (max-width: 768px) {
+  .RoadmapTimeline::after {
+    left: 31px;
+  }
+
+  .RoadmapItem {
+    width: 100%;
+    padding-left: 70px;
+    padding-right: 25px;
+  }
+
+  .RoadmapItem::before {
+    left: 60px;
+    border: medium solid white;
+    border-width: 10px 10px 10px 0;
+    border-color: transparent white transparent transparent;
+  }
+
+  .RoadmapItem::after {
+    left: 15px;
+  }
+
+  .RoadmapItem:nth-child(even) {
+    left: 0%;
+  }
+}
+
+.ContactCtaSection {
+  background-color: var(--background-dark);
+  color: var(--text-light);
+  padding: 80px 20px;
+  font-family: var(--font-body);
+  text-align: center;
+}
+
+.ContactCtaContent {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.ContactCtaContent h2 {
+  font-family: var(--font-heading);
+  font-size: 3.5em;
+  color: var(--primary-color);
+  margin-bottom: 30px;
+}
+
+.ContactCtaContent p {
+  font-size: 1.3em;
+  line-height: 1.6;
+  color: var(--text-light);
+  margin-bottom: 50px;
+}
+
+.ContactForm {
+  background-color: var(--background-medium);
+  border-radius: 10px;
+  padding: 40px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  text-align: left;
+}
+
+.FormField {
+  margin-bottom: 20px;
+}
+
+.FormField label {
+  display: block;
+  font-size: 1.1em;
+  color: var(--text-light);
+  margin-bottom: 8px;
+}
+
+.FormField input[type="text"],
+.FormField input[type="email"],
+.FormField textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  background-color: var(--background-dark);
+  color: var(--text-light);
+  font-size: 1em;
+  box-sizing: border-box; /* Ensure padding doesn't increase width */
+}
+
+.FormField input[type="text"]:focus,
+.FormField input[type="email"]:focus,
+.FormField textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(var(--primary-color-rgb), 0.3);
+}
+
+.CtaButton {
+  background-color: var(--accent-color);
+  color: var(--background-dark);
+  padding: 15px 30px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.2em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  display: block;
+  width: 100%;
+  margin-top: 30px;
+}
+
+.CtaButton:hover {
+  background-color: var(--primary-color);
+  transform: translateY(-2px);
+}
+
+.Footer {
+  background-color: var(--background-dark);
+  color: var(--text-medium);
+  padding: 40px 20px;
+  font-family: var(--font-body);
+  text-align: center;
+  border-top: 1px solid var(--border-color);
+}
+
+.FooterContent {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.FooterContent p {
+  margin: 0;
+  font-size: 0.9em;
+}
+
+.SocialLinks a {
+  color: var(--text-medium);
+  font-size: 1.5em;
+  margin-left: 20px;
+  transition: color 0.3s ease;
+}
+
+.SocialLinks a:hover {
+  color: var(--primary-color);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+  .HeroTitle {
+    font-size: var(--font-size-h1);
+  }
+
+  .HeroSubtitle {
+    font-size: var(--font-size-h4);
+  }
+
+  .RoadmapItem {
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 40px;
+  }
+
+  .RoadmapItem:nth-child(odd) {
+    flex-direction: column;
+  }
+
+  .RoadmapYear {
+    width: 100%;
+    margin-bottom: 20px;
+    padding-top: 0;
+  }
+
+  .RoadmapYear::before {
+    left: 50%;
+    transform: translateX(-50%);
+    top: -10px; /* Adjust position */
+  }
+
+  .RoadmapDescription {
+    width: 80%;
+    text-align: center;
+  }
+
+  .RoadmapTimeline::before {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 768px) {
+  .Navbar {
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px 5%;
+  }
+
+  .NavLinks {
+    gap: 20px;
+  }
+
+  .SectionTitle {
+    font-size: var(--font-size-h3);
+    margin-bottom: 40px;
+  }
+
+  section {
+    padding: 60px 5%;
+  }
+
+  .HeroTitle {
+    font-size: var(--font-size-h2);
+  }
+
+  .HeroSubtitle {
+    font-size: var(--font-size-body);
+  }
+
+  .JourneyContent {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .JourneyText {
+    max-width: 100%;
+  }
+
+  .TechnologyModules {
+    grid-template-columns: 1fr;
+  }
+
+  .BenefitCards {
+    grid-template-columns: 1fr;
+  }
+
+  .ComparisonTable {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .ComparisonColumn {
+    padding: 15px;
+  }
+
+  .RoadmapDescription {
+    width: 95%;
+  }
+
+  .ContactForm {
+    padding: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .NavbarBrand {
+    font-size: var(--font-size-h4);
+  }
+
+  .NavLinks {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .NavLinks a {
+    font-size: var(--font-size-small);
+  }
+
+  .HeroTitle {
+    font-size: var(--font-size-h3);
+  }
+
+  .HeroSubtitle {
+    font-size: var(--font-size-small);
+  }
+
+  .CtaButton {
+    padding: 12px 25px;
+    font-size: var(--font-size-small);
+  }
+
+  .RoadmapYear {
+    font-size: var(--font-size-h4);
+  }
+
+  .RoadmapDescription h3 {
+    font-size: var(--font-size-body);
+  }
+
+  .RoadmapDescription p {
+    font-size: var(--font-size-small);
+  }
+
+  .Footer {
+    font-size: var(--font-size-x-small);
+  }
+
+  .SocialLinks {
+    gap: 15px;
+  }
+}
+
+/* Entrance Animations */
+.animate-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.animate-in.is-inview {
+  opacity: 1;
+  transform: translateY(0);
+}
