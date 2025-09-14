@@ -22,7 +22,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: flex-start; /* Aligned content to the top */
-  /* Removed padding-top to eliminate the empty space */
+  padding-top: 0px; /* Added padding to move content down from the top */
   /* Removed overflow: hidden; to allow scrolling */
   color: var(--text-light);
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
