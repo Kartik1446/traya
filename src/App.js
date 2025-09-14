@@ -1,49 +1,97 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { LocomotiveScrollProvider } from 'react-locomotive-scroll';
 import 'locomotive-scroll/dist/locomotive-scroll.css';
 import './App.css';
+import logo from './logo.svg'; // Assuming logo.svg is in src folder
+import CardNav from './CardNav'; // Import the new CardNav component
 
 function App() {
-  const [expandedModule, setExpandedModule] = useState(null);
   const containerRef = useRef(null);
+  // const [expandedModule, setExpandedModule] = useState(null); // Removed as it's no longer used
+  const [trainPosition, setTrainPosition] = useState(0);
 
-  const toggleModule = (moduleName) => {
-    setExpandedModule(expandedModule === moduleName ? null : moduleName);
-  };
+  // Removed handleModuleClick as it's no longer used with the new navbar
+  // const handleModuleClick = (moduleName) => {
+  //   setExpandedModule(expandedModule === moduleName ? null : moduleName);
+  // };
 
   useEffect(() => {
-    const trainAnimation = document.querySelector('.TrainAnimation');
-    if (trainAnimation) {
-      let position = 0;
-      const speed = 0.5; // Adjust speed as needed
-
-      const animateTrain = () => {
-        position += speed;
-        if (position > window.innerWidth) {
-          position = -trainAnimation.offsetWidth;
-        }
-        trainAnimation.style.transform = `translateX(${position}px)`;
-        requestAnimationFrame(animateTrain);
-      };
-
-      animateTrain();
-    }
+    const interval = setInterval(() => {
+      setTrainPosition(prevPosition => (prevPosition + 1) % 100);
+    }, 100);
+    return () => clearInterval(interval);
   }, []);
+
+  const navItems = [
+    {
+      label: "Home",
+      bgColor: "#0D0716",
+      textColor: "#fff",
+      links: [
+        { label: "Hero", ariaLabel: "Go to Hero Section" }
+      ]
+    },
+    {
+      label: "Journey",
+      bgColor: "#170D27",
+      textColor: "#fff",
+      links: [
+        { label: "Our Journey", ariaLabel: "Explore Our Journey" }
+      ]
+    },
+    {
+      label: "Technology",
+      bgColor: "#271E37",
+      textColor: "#fff",
+      links: [
+        { label: "Tech Stack", ariaLabel: "View Technology Stack" }
+      ]
+    },
+    {
+      label: "Value",
+      bgColor: "#372E47",
+      textColor: "#fff",
+      links: [
+        { label: "Our Values", ariaLabel: "Discover Our Values" }
+      ]
+    },
+    {
+      label: "Roadmap",
+      bgColor: "#473E57",
+      textColor: "#fff",
+      links: [
+        { label: "Future Plans", ariaLabel: "See Our Roadmap" }
+      ]
+    },
+    {
+      label: "Contact",
+      bgColor: "#574E67",
+      textColor: "#fff",
+      links: [
+        { label: "Get in Touch", ariaLabel: "Contact Us" }
+      ]
+    }
+  ];
 
   return (
     <LocomotiveScrollProvider
       options={{
         smooth: true,
-        // ... other options
+        lerp: 0.05,
       }}
-      watch={
-        [
-          // Dependencies to watch for scroll updates
-        ]
-      }
       containerRef={containerRef}
     >
       <main data-scroll-container ref={containerRef}>
+        <CardNav
+          logo={logo}
+          logoAlt="Company Logo"
+          items={navItems}
+          baseColor="#fff"
+          menuColor="#000"
+          buttonBgColor="#111"
+          buttonTextColor="#fff"
+          ease="power3.out"
+        />
         <div className="App">
           <header className="App-header" data-scroll-section>
             <nav className="Navbar">
