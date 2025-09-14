@@ -7,37 +7,37 @@ import { Button } from "@/components/ui/button"
 
 const teamMembers = [
   {
-    name: "Dr. Rajesh Kumar",
+    name: "Satyabrat Sahu",
     designation: "Chief Technology Officer",
     image: "/professional-indian-male-engineer-with-glasses.jpg",
     bio: "Leading AI and precision technology development with 15+ years in railway systems.",
   },
   {
-    name: "Priya Sharma",
+    name: "Archana Gupta",
     designation: "Head of Innovation",
     image: "/professional-indian-female-engineer.jpg",
     bio: "Spearheading indigenous technology solutions and sustainable railway innovations.",
   },
   {
-    name: "Arjun Patel",
-    designation: "Lead Systems Engineer",
+    name: "Kartik Bhardwaj",
+    designation: "Lead Systems Engine",
     image: "/professional-indian-male-engineer.jpg",
     bio: "Expert in railway infrastructure and precision measurement systems.",
   },
   {
-    name: "Dr. Meera Reddy",
+    name: "Ashutosh Rath",
     designation: "AI Research Director",
     image: "/indian-female-scientist.png",
     bio: "Pioneering AI algorithms for predictive maintenance and operational efficiency.",
   },
   {
-    name: "Vikram Singh",
+    name: "Tanish Mitra",
     designation: "Operations Manager",
     image: "/professional-indian-male-manager.jpg",
     bio: "Ensuring seamless integration of technology solutions across railway networks.",
   },
   {
-    name: "Anita Gupta",
+    name: "Mehul Sinha",
     designation: "Quality Assurance Lead",
     image: "/professional-indian-female-quality-engineer.jpg",
     bio: "Maintaining the highest standards of precision and reliability in all systems.",
@@ -92,7 +92,7 @@ export function TeamSection() {
           {teamMembers.map((member, index) => (
             <div
               key={member.name}
-              ref={(el) => (cardRefs.current[index] = el)}
+              ref={(el) => { cardRefs.current[index] = el; }}
               className={`transition-all duration-700 ${
                 visibleCards[index] ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
               }`}
