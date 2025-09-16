@@ -79,3 +79,44 @@
 | **tests/**      | Unit tests and integration tests for validation |
 | **README.md**   | Main project documentation and overview |
 
+
+
+---
+
+## 🔮 Future Enhancements
+
+- Integration with **SCADA** for industrial-grade monitoring  
+- Cloud-based predictive maintenance analytics  
+- Environmental sensors for adaptive AI  
+- Multi-language passenger dashboard for inclusivity  
+- Export-ready deployment packages  
+
+---
+
+## 📚 Research & References
+
+- [RDSO TM/IM/448 Rev.1:2023](https://rdso.indianrailways.gov.in)  
+- [EN 13848 Track Geometry Standards](https://www.cen.eu)  
+- [NTES Train Enquiry System](https://enquiry.indianrail.gov.in)  
+- [IRCTC APIs](https://www.irctc.co.in)  
+- [ERTMS – European Rail Traffic Management](https://www.ertms.net)  
+- [TensorFlow](https://www.tensorflow.org) | [PyTorch](https://pytorch.org) | [YOLO](https://pjreddie.com/darknet/yolo)  
+
+---
+
+## 📸 Screenshots / Demo (to add later)
+*(Insert system architecture diagram, dashboard screenshots, or demo video links here.)*  
+
+---
+
+## 🏆 Acknowledgements
+
+This project was developed as part of **Smart India Hackathon (SIH) 2025**, under the theme *Transportation & Logistics*.  
+Special thanks to mentors, faculty, and Indian Railways domain experts for guidance.  
+
+---
+
+## 📜 License
+This project is licensed under the MIT License – see the [LICENSE](LICENSE) file for details.  
+
+---
