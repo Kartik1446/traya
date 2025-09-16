@@ -112,10 +112,10 @@
 ---
 
 ## 📈 Graph Outputs
-<img width="960" height="540" alt="AI" src="https://github.com/user-attachments/assets/d3957b3b-0253-4630-9c05-33e6b3f06824" />
-<img width="960" height="540" alt="Logic" src="https://github.com/user-attachments/assets/79a5e6db-73d5-48e8-85f7-91a8031c7b66" />
+<img width="960" height="478" alt="AI" src="https://github.com/user-attachments/assets/9a9c1fab-3527-4389-a0ba-eab077daf87d" />
+<img width="960" height="473" alt="Logic" src="https://github.com/user-attachments/assets/f716605f-8a39-4fef-ba9b-2ddb5a2b27bd" />
 
-
+---
 
 ## 🏆 Acknowledgements
 
