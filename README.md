@@ -112,7 +112,12 @@
 ---
 
 ## 📈 Graph Outputs
+
+### Neural Network 
+
 <img width="960" height="478" alt="AI" src="https://github.com/user-attachments/assets/9a9c1fab-3527-4389-a0ba-eab077daf87d" />
+
+### Control Logic Incase AI fails
 <img width="960" height="473" alt="Logic" src="https://github.com/user-attachments/assets/f716605f-8a39-4fef-ba9b-2ddb5a2b27bd" />
 
 ---
