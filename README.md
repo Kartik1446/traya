@@ -111,6 +111,12 @@
 
 ---
 
+## 📈 Graph Outputs
+<img width="960" height="540" alt="AI" src="https://github.com/user-attachments/assets/d3957b3b-0253-4630-9c05-33e6b3f06824" />
+<img width="960" height="540" alt="Logic" src="https://github.com/user-attachments/assets/79a5e6db-73d5-48e8-85f7-91a8031c7b66" />
+
+
+
 ## 🏆 Acknowledgements
 
 This project was developed as part of **Smart India Hackathon (SIH) 2025**, under the theme *Transportation & Logistics*.  
