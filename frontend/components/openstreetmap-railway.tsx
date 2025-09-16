@@ -835,6 +835,7 @@ export default function OpenStreetMapRailway() {
     energySaved: 23.7,
     predictiveAccuracy: 98.5,
   })
+  const [isLightMode, setIsLightMode] = useState(false) // New state for light mode
 
   useEffect(() => {
     // Simulate real-time data updates
@@ -855,7 +856,7 @@ export default function OpenStreetMapRailway() {
       if (!mapRef.current) return
 
       // Load Leaflet dynamically
-      const L = (await import("leaflet")).default
+      const L = (await import("leaflet")).default as typeof import('leaflet')
 
       // Fix for default markers
       delete (L.Icon.Default.prototype as any)._getIconUrl
@@ -868,15 +869,28 @@ export default function OpenStreetMapRailway() {
       const mapInstance = L.map(mapRef.current, {
         center: [20.5937, 78.9629], // Center of India
         zoom: 5,
-        zoomControl: true,
+        zoomControl: false, // Disable the default zoom control
         attributionControl: false,
       })
 
-      L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png", {
-        attribution: "© OpenStreetMap contributors © CARTO",
-        subdomains: "abcd",
-        maxZoom: 19,
-      }).addTo(mapInstance)
+      L.tileLayer(
+        isLightMode
+          ? "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
+          : "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+        {
+          attribution:
+            '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+          maxZoom: 18,
+        }
+      ).addTo(mapInstance)
+
+      // Add a new zoom control to the topright position
+      L.control.zoom({ position: "topright" }).addTo(mapInstance)
+
+      // Invalidate map size after a short delay to ensure it renders correctly
+      setTimeout(() => {
+        mapInstance?.invalidateSize()
+      }, 100)
 
       const enhancedRailwayRoutes = [
         // Golden Quadrilateral routes
@@ -902,7 +916,7 @@ export default function OpenStreetMapRailway() {
       ]
 
       enhancedRailwayRoutes.forEach((route) => {
-        const polyline = L.polyline([route.from, route.to], {
+        const polyline = L.polyline([route.from as L.LatLngExpression, route.to as L.LatLngExpression], {
           color: "#1de9b6",
           weight: 3,
           opacity: 0.8,
@@ -1030,18 +1044,19 @@ export default function OpenStreetMapRailway() {
         map.remove()
       }
     }
-  }, [stationFilter])
+  }, [stationFilter, isLightMode]) // Re-run effect when isLightMode changes
 
   const railwayZones = ["all", ...Array.from(new Set(allIndianRailwayStations.map((station) => station.zone)))]
 
   return (
     <div className="relative w-full h-full">
-      {/* OpenStreetMap Container */}
-      <div ref={mapRef} className="w-full h-full rounded-lg overflow-hidden" />
+      <div ref={mapRef} className="h-full w-full" />
+
+
 
       {/* Loading Overlay */}
       {!isLoaded && (
-        <div className="absolute inset-0 bg-dark-900/80 flex items-center justify-center rounded-lg">
+        <div className="absolute inset-0 bg-dark-900/80 flex items-center justify-center rounded-lg z-20">
           <div className="text-center">
             <div className="w-12 h-12 border-4 border-neon-blue border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
             <p className="text-white">Loading Railway Network...</p>
@@ -1049,37 +1064,37 @@ export default function OpenStreetMapRailway() {
         </div>
       )}
 
-      <Card className="absolute top-4 left-4 bg-dark-800/90 border-neon-blue/30 backdrop-blur-sm">
+      <Card className="absolute top-4 left-4 bg-white border-gray-200 shadow-lg z-[10000]">
         <div className="p-4 space-y-3">
-          <h3 className="text-white font-semibold flex items-center gap-2">
+          <h3 className="text-black font-semibold flex items-center gap-2">
             <Zap className="w-4 h-4 text-neon-blue" />
             Live Network Status
           </h3>
           <div className="grid grid-cols-2 gap-3 text-sm">
             <div>
-              <p className="text-gray-400">Total Stations</p>
-              <p className="text-neon-green font-mono">{allIndianRailwayStations.length}</p>
+              <p className="text-gray-600">Total Stations</p>
+              <p className="text-black font-mono">{allIndianRailwayStations.length}</p>
             </div>
             <div>
-              <p className="text-gray-400">Active Trains</p>
-              <p className="text-neon-green font-mono">{realTimeData.activeTrains.toLocaleString()}</p>
+              <p className="text-gray-600">Active Trains</p>
+              <p className="text-black font-mono">{realTimeData.activeTrains.toLocaleString()}</p>
             </div>
             <div>
-              <p className="text-gray-400">On-Time %</p>
-              <p className="text-neon-green font-mono">{realTimeData.onTimePerformance.toFixed(1)}%</p>
+              <p className="text-gray-600">On-Time %</p>
+              <p className="text-black font-mono">{realTimeData.onTimePerformance.toFixed(1)}%</p>
             </div>
             <div>
-              <p className="text-gray-400">AI Accuracy</p>
-              <p className="text-neon-green font-mono">{realTimeData.predictiveAccuracy.toFixed(1)}%</p>
+              <p className="text-gray-600">AI Accuracy</p>
+              <p className="text-black font-mono">{realTimeData.predictiveAccuracy.toFixed(1)}%</p>
             </div>
           </div>
 
-          <div className="pt-2 border-t border-gray-700">
-            <label className="text-gray-400 text-xs block mb-1">Filter by Zone:</label>
+          <div className="pt-2 border-t border-gray-300">
+            <label className="text-gray-600 text-xs block mb-1">Filter by Zone:</label>
             <select
               value={stationFilter}
               onChange={(e) => setStationFilter(e.target.value)}
-              className="w-full bg-dark-700 text-white text-xs p-1 rounded border border-gray-600"
+              className="w-full bg-gray-100 text-black text-xs p-1 rounded border border-gray-300"
             >
               {railwayZones.map((zone) => (
                 <option key={zone} value={zone}>
@@ -1090,13 +1105,12 @@ export default function OpenStreetMapRailway() {
           </div>
         </div>
       </Card>
-
       {/* Station Details Panel */}
       {selectedStation && (
-        <Card className="absolute top-4 right-4 w-80 bg-dark-800/90 border-neon-blue/30 backdrop-blur-sm">
+        <Card className="absolute top-4 right-4 w-80 bg-white text-black border-gray-200 z-[1000000]">
           <div className="p-4">
             <div className="flex items-center justify-between mb-3">
-              <h3 className="text-white font-semibold">{selectedStation.name}</h3>
+              <h3 className="text-black font-semibold">{selectedStation.name}</h3>
               <Badge variant={selectedStation.status === "active" ? "default" : "secondary"}>
                 {selectedStation.status === "active" && <CheckCircle className="w-3 h-3 mr-1" />}
                 {selectedStation.status === "maintenance" && <AlertTriangle className="w-3 h-3 mr-1" />}
@@ -1106,29 +1120,29 @@ export default function OpenStreetMapRailway() {
 
             <div className="space-y-2 text-sm mb-4">
               <div className="flex justify-between">
-                <span className="text-gray-400">Station Code:</span>
-                <span className="text-white font-mono">{selectedStation.code}</span>
+                <span className="text-gray-600">Station Code:</span>
+                <span className="text-black font-mono">{selectedStation.code}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-gray-400">Railway Zone:</span>
+                <span className="text-gray-600">Railway Zone:</span>
                 <span className="text-neon-blue text-xs">{selectedStation.zone}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-gray-400">State:</span>
-                <span className="text-white">{selectedStation.state}</span>
+                <span className="text-gray-600">State:</span>
+                <span className="text-black">{selectedStation.state}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-gray-400">Daily Trains:</span>
+                <span className="text-gray-600">Daily Trains:</span>
                 <span className="text-neon-green">{selectedStation.trains}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-gray-400">Daily Passengers:</span>
+                <span className="text-gray-600">Daily Passengers:</span>
                 <span className="text-neon-green">{selectedStation.passengers.toLocaleString()}</span>
               </div>
             </div>
 
             <div className="mb-4">
-              <h4 className="text-white font-medium mb-2 text-sm">AI Features Active</h4>
+              <h4 className="text-black font-medium mb-2 text-sm">AI Features Active</h4>
               <div className="flex flex-wrap gap-1">
                 {selectedStation.aiFeatures.map((feature, index) => (
                   <Badge key={index} variant="outline" className="text-xs border-neon-blue/50 text-neon-blue">
@@ -1145,29 +1159,29 @@ export default function OpenStreetMapRailway() {
         </Card>
       )}
 
-      <Card className="absolute bottom-4 left-4 bg-dark-800/90 border-neon-blue/30 backdrop-blur-sm">
+      <Card className="absolute bottom-4 left-4 bg-white border-gray-200 shadow-lg z-[10000]">
         <div className="p-3">
-          <h4 className="text-white font-medium mb-2 text-sm">Station Status</h4>
+          <h4 className="text-black font-medium mb-2 text-sm">Station Status</h4>
           <div className="space-y-1 text-xs">
             <div className="flex items-center gap-2">
               <div className="w-3 h-3 rounded-full bg-neon-blue animate-pulse"></div>
-              <span className="text-gray-300">Active</span>
+              <span className="text-gray-700">Active</span>
             </div>
             <div className="flex items-center gap-2">
               <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-              <span className="text-gray-300">Maintenance</span>
+              <span className="text-gray-700">Maintenance</span>
             </div>
             <div className="flex items-center gap-2">
               <div className="w-3 h-3 rounded-full bg-red-500"></div>
-              <span className="text-gray-300">Inactive</span>
+              <span className="text-gray-700">Inactive</span>
             </div>
           </div>
-          <div className="mt-2 pt-2 border-t border-gray-700">
+          <div className="mt-2 pt-2 border-t border-gray-300">
             <div className="flex items-center gap-2 mb-1">
               <div className="w-3 h-1 bg-neon-green"></div>
-              <span className="text-gray-300">Railway Routes</span>
+              <span className="text-gray-700">Railway Routes</span>
             </div>
-            <p className="text-xs text-gray-400">
+            <p className="text-xs text-gray-600">
               Zoom: {zoomLevel} | Showing {zoomLevel < 6 ? "Major" : zoomLevel < 8 ? "Medium+" : "All"} Stations
             </p>
           </div>

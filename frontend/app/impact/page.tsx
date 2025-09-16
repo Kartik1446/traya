@@ -1,6 +1,6 @@
 import { ImpactHero } from "@/components/impact-hero"
 import { ImpactCounters } from "@/components/impact-counters"
-import { BenefitsSection } from "@/components/benefits-section"
+import { MissionVision } from "@/components/mission-vision"
 import { TestimonialsSection } from "@/components/testimonials-section"
 import { Footer } from "@/components/footer"
 
@@ -9,8 +9,8 @@ export default function ImpactPage() {
     <main className="min-h-screen pt-16">
       <ImpactHero />
       <ImpactCounters />
-      <BenefitsSection />
-      <TestimonialsSection />
+      <MissionVision />
+      {/* <TestimonialsSection /> */} {/* Removed this line */}
       <Footer />
     </main>
   )

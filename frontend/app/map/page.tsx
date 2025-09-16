@@ -22,14 +22,14 @@ export default function MapPage() {
             </p>
           </div>
 
-          <div className="h-[600px] rounded-lg overflow-hidden border border-neon-blue/30">
+          <div className="relative z-0 h-[600px] rounded-lg overflow-hidden border border-neon-blue/30"> {/* Reverted height to h-[600px] */}
             <OpenStreetMapRailway />
           </div>
         </div>
       </section>
 
       {/* AI Features */}
-      <section className="py-20 px-4 bg-dark-800">
+      <section className="relative z-10 py-20 px-4 bg-dark-800">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-white mb-4">AI-Powered Railway Intelligence</h2>
@@ -44,7 +44,7 @@ export default function MapPage() {
       </section>
 
       {/* IoT Dashboard */}
-      <section className="py-20 px-4 bg-dark-900">
+      <section className="relative z-10 py-20 px-4 bg-dark-900">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-white mb-4">IoT Sensor Network</h2>
@@ -59,7 +59,7 @@ export default function MapPage() {
       </section>
 
       {/* Weather Integration */}
-      <section className="py-20 px-4 bg-dark-800">
+      <section className="relative z-10 py-20 px-4 bg-dark-800">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-white mb-4">Weather-Aware Operations</h2>

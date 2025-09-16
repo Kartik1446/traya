@@ -38,7 +38,7 @@ export function InnovationHero() {
                 <div className="w-20 h-20 bg-gradient-to-r from-primary to-secondary rounded-2xl flex items-center justify-center glow-effect">
                   <Brain className="w-10 h-10 text-white" />
                 </div>
-                <div className="absolute -top-2 -right-2 w-6 h-6 bg-secondary rounded-full flex items-center justify-center animate-bounce">
+                <div className="absolute -top-2 -right-2 w-6 h-6 bg-secondary rounded-full flex items-center justify-center">
                   <Zap className="w-3 h-3 text-secondary-foreground" />
                 </div>
               </div>

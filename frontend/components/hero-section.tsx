@@ -39,7 +39,7 @@ export function HeroSection() {
               <div className="w-20 h-20 bg-gradient-to-r from-primary to-secondary rounded-2xl flex items-center justify-center glow-effect">
                 <Train className="w-10 h-10 text-white" />
               </div>
-              <div className="absolute -top-2 -right-2 w-6 h-6 bg-secondary rounded-full flex items-center justify-center animate-bounce">
+              <div className="absolute -top-2 -right-2 w-6 h-6 bg-secondary rounded-full flex items-center justify-center">
                 <Zap className="w-3 h-3 text-secondary-foreground" />
               </div>
             </div>
@@ -49,7 +49,7 @@ export function HeroSection() {
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-foreground mb-6 leading-tight">
             <span className="neon-text">TRAYA</span>
             <br />
-            <span className="text-2xl md:text-4xl lg:text-5xl text-muted-foreground">Future of Indian Railways</span>
+            <span className="text-2xl md:text-4xl lg:text-5xl text-muted-foreground">Triad based Railway Automation & Yatra Assistant</span>
           </h1>
 
           {/* Subtitle */}
@@ -98,10 +98,8 @@ export function HeroSection() {
       </div>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-primary rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-primary rounded-full mt-2 animate-pulse"></div>
-        </div>
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
+        
       </div>
     </section>
   )
