@@ -67,16 +67,15 @@
 
 ---
 
-## 📂 Repository Structure
+## 📂 Project Structure
 
----
-Traya/
-├── backend/ # Flask/Django backend APIs
-├── frontend/ # React/Flutter dashboard
-├── ml-models/ # PyTorch training, TF Lite models
-├── iot/ # GPS/IMU/Encoder integration scripts
-├── docs/ # Standards, design docs, references
-├── tests/ # Unit and integration tests
-└── README.md
+| Folder / File   | Description |
+|-----------------|-------------|
+| **backend/**    | Flask/Django backend APIs for scheduling, ticket-ID mapping, and data handling |
+| **frontend/**   | React/Flutter dashboards for operators and passengers |
+| **ml-models/**  | PyTorch training scripts and TensorFlow Lite models for deployment |
+| **iot/**        | Scripts for GPS, IMU, encoder, and sensor integration |
+| **docs/**       | Standards, compliance documents, architecture diagrams, and references |
+| **tests/**      | Unit tests and integration tests for validation |
+| **README.md**   | Main project documentation and overview |
 
----
