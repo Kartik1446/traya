@@ -105,7 +105,9 @@
 ---
 
 ## 📸 Screenshots / Demo (to add later)
-*(Insert system architecture diagram, dashboard screenshots, or demo video links here.)*  
+*(Insert system architecture diagram, dashboard screenshots, or demo video links here.)* 
+<img width="875" height="262" alt="image" src="https://github.com/user-attachments/assets/2e7f5b1d-c604-4f12-885a-8f2f651bf4e8" />
+
 
 ---
 
