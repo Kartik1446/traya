@@ -11,7 +11,6 @@ export default function ApplicationProcess() {
   })
 
 
-  
   const steps = [
     {
       icon: FileText,
