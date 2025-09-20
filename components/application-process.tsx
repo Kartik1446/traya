@@ -10,6 +10,8 @@ export default function ApplicationProcess() {
     threshold: 0.1,
   })
 
+
+  
   const steps = [
     {
       icon: FileText,
