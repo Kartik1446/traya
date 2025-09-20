@@ -9,9 +9,7 @@ export default function ApplicationProcess() {
     triggerOnce: true,
     threshold: 0.1,
   })
-
-
-  
+   
   const steps = [
     {
       icon: FileText,
